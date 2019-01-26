@@ -7,6 +7,7 @@
 //
 
 #import "DataBase.h"
+#import "Resources.h"
 
 @interface DataBase ()
 {
@@ -34,20 +35,8 @@ static DataBase *g_sharedInstance = nil;
 {
   self = [super init];
   if (self) {
-    _preDefinedDigits =
-    @{
-      @131212232 : @0,
-      @111112112 : @1,
-      @131132231 : @2,
-      @131132132 : @3,
-      @111232112 : @4,
-      @131231132 : @5,
-      @131231232 : @6,
-      @131112112 : @7,
-      @131232232 : @8,
-      @131232132 : @9
-              };
-    _charMapping = @{@" ":@1,@"I":@2,@"_":@3};
+    _preDefinedDigits = DB_Digits;
+    _charMapping = DB_Mapping;
   }
   return self;
 }

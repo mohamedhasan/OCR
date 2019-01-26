@@ -40,6 +40,7 @@
 		3B4A509E21FB916C0085FF3B /* Digit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Digit.m; sourceTree = "<group>"; };
 		3B4A50A321FC5E9B0085FF3B /* DataBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
 		3B4A50A421FC5E9B0085FF3B /* DataBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
+		3B4A50A621FC9B130085FF3B /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Resources.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 				3B4A509E21FB916C0085FF3B /* Digit.m */,
 				3B4A50A321FC5E9B0085FF3B /* DataBase.h */,
 				3B4A50A421FC5E9B0085FF3B /* DataBase.m */,
+				3B4A50A621FC9B130085FF3B /* Resources.h */,
 				3B4A509521FB32310085FF3B /* Utilities */,
 			);
 			path = OCR;
