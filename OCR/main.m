@@ -7,11 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserIO.h"
+#import "DigitsReader.h"
 
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
-      // insert code here...
-      NSLog(@"Hello, World!");
+    
+//    [UserIO printMessage:@"Please enter ASCII File Name... \n"];
+//    NSString *userInput = [UserIO readInput];
+
+    NSString *filepath = @"/Users/mohamedhassan/Desktop/ocr.txt";
+    NSError *error;
+    NSString *userInput = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:&error];
+    
+    if (error)
+      NSLog(@"Error reading file: %@", error.localizedDescription);
+
+    
+    [[DigitsReader sharedInstance] readDefaultSettings];
+    [[DigitsReader sharedInstance] readDigitsFromString:userInput];
   }
   return 0;
 }
