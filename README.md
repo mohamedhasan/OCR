@@ -28,6 +28,8 @@ To search any digit (matrix) in database first a 'matrixNumberRepresesntation' i
 the 'matrixNumberRepresesntation' is then used to search through database which is associated to it's the real number(Digit).
 
 In this way effort is done only creating the database and the search process is speeded up, and the project can work well with larger datasets.
+<br/>
+<img width='400' src='https://user-images.githubusercontent.com/4721781/51793181-08b71180-21c5-11e9-834a-ec24c0f0d376.JPG'/>
 
 <br/>
 <br/>
@@ -39,3 +41,18 @@ Due to that this a Terminal app and ther is no Bundle available like in normal m
 
 
 ### Changing and Extending the project
+
+In Order to make some additions or customizations rapidly the prjoect allow the following :
+
+#### Override separators and matrices(digits) sizes.
+There properties are exposed for change and program can accomdate to them but ofcourse corresponding dataset should to be provided:
+@property (nonatomic) NSInteger digitWidth;
+@property (nonatomic) NSInteger linePerDigit;
+@property (nonatomic) NSInteger delimits;
+
+#### NameSpace
+@property (nonatomic) NSString *allowedNameSpace;
+overriding this will lead to changing the characters used to draw Digits in files (_ I 'empty space'.... etc).
+
+#### NameSpace Mapping
+`Digit.h` uses a protocol method to ask for mapping for the needed nameSpace, which can be a useful method od overriding the current behaviour and change the mapping with other set of numbers.
