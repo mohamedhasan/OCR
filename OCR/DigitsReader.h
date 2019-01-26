@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Digit.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DigitsReader : NSObject
+@interface DigitsReader : NSObject <DigitCharacterMappingProtocol>
 
 @property (nonatomic) NSInteger digitWidth;
 @property (nonatomic) NSInteger linePerDigit;
 @property (nonatomic) NSInteger delimits;
 @property (nonatomic) NSString *allowedNameSpace;
+@property (nonatomic) NSString *errorMessage;
 
 + (instancetype)sharedInstance;
 - (void)readDefaultSettings;

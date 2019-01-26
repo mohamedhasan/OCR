@@ -10,10 +10,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol DigitCharacterMappingProtocol <NSObject>
+
+- (NSNumber *)numberForDigit:(NSString *)charDigit;
+
+@end
+
 @interface Digit : NSObject
+
+@property(weak) id <DigitCharacterMappingProtocol> delegate;
+@property(nonatomic)BOOL error;
 
 + (Digit *)digitWithWidth:(NSInteger)width height:(NSInteger)height nameSpace:(NSString *)nameSpace;
 - (void)addDigitData:(NSString *)data verticalIndex:(NSInteger)index;
+- (NSNumber *)matrixNumberRepresesntation;
+
 @end
 
 NS_ASSUME_NONNULL_END

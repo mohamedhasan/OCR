@@ -8,6 +8,7 @@
 
 #import "Digit.h"
 #import "Utilities.h"
+#import "DataBase.h"
 
 @interface Digit ()
 
@@ -42,5 +43,19 @@
   self.matrix[index] = [Utilities stringToArray:data];
 }
 
-
+- (NSNumber *)matrixNumberRepresesntation
+{
+  NSString *stringRepresesntation = @"";
+  for (NSArray *row in self.matrix) {
+    for (NSString *digit in row) {
+      NSNumber *num = [self.delegate numberForDigit:digit];
+      if (!num) {
+        self.error = YES;
+        return nil;
+      }
+      stringRepresesntation = [stringRepresesntation stringByAppendingString:[NSString stringWithFormat:@"%@",num]];
+    }
+  }
+  return @(stringRepresesntation.doubleValue);
+}
 @end

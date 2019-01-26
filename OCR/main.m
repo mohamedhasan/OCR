@@ -13,19 +13,24 @@
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
     
-//    [UserIO printMessage:@"Please enter ASCII File Name... \n"];
-//    NSString *userInput = [UserIO readInput];
-
-    NSString *filepath = @"/Users/mohamedhassan/Desktop/ocr.txt";
+    [UserIO printMessage:@"Please enter ASCII File Name... \n"];
+    NSString *userInput = [UserIO readInput];
+    NSString *filepath;
+    if (userInput.length > 0) {
+      filepath = userInput;
+    } else {
+      filepath = @"/Users/mohamedhassan/Desktop/ocr.txt";
+    }
+    
     NSError *error;
-    NSString *userInput = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:&error];
+    NSString *fileInput = [NSString stringWithContentsOfFile:filepath encoding:NSUTF8StringEncoding error:&error];
     
     if (error)
       NSLog(@"Error reading file: %@", error.localizedDescription);
 
-    
     [[DigitsReader sharedInstance] readDefaultSettings];
-    [[DigitsReader sharedInstance] readDigitsFromString:userInput];
+    NSString *result = [[DigitsReader sharedInstance] readDigitsFromString:fileInput];
+    [UserIO printMessage:result];
   }
   return 0;
 }

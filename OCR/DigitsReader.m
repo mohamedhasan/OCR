@@ -8,18 +8,18 @@
 
 #import "DigitsReader.h"
 #import "Utilities.h"
-#import "Digit.h"
+#import "DataBase.h"
 
 @interface DigitsReader()
 {
   NSString *_currentString;
+  NSDictionary *_charMapping;
 }
 @end
 
 @implementation DigitsReader
 
 static DigitsReader *g_sharedInstance = nil;
-
 
 + (instancetype)sharedInstance
 {
@@ -37,21 +37,38 @@ static DigitsReader *g_sharedInstance = nil;
   self.digitWidth = 3;
   self.linePerDigit = 3;
   self.delimits = 1;
+  self.errorMessage = @"Error in data";
   self.allowedNameSpace = @" _I";
+  _charMapping = [[DataBase sharedInstance] numberCharMapping];
 }
 
 - (NSString *)readDigitsFromString:(NSString *)string
 {
   _currentString = string;
-  
   NSArray *fileLines = [self extractLinesFromString:_currentString];
   NSArray *digitLines = [Utilities splitList:fileLines bySize:self.linePerDigit];
   
-  NSMutableArray *digits = [NSMutableArray new];
+  NSString *result = @"";
   for (NSArray *line in digitLines) {
-    [digits addObjectsFromArray:[self extractDigitsFromLine:line]];
+   NSString *printedLine = [self digitLineToString:[self extractDigitsFromLine:line]];
+    result = [result stringByAppendingString:printedLine];
+    result = [result stringByAppendingString:@"\n"];
   }
-  return @"";
+  
+  return result;
+}
+
+- (NSString *)digitLineToString:(NSArray *)line
+{
+  NSString *printedLine = @"";
+  for (Digit *digit in line) {
+    NSNumber *number = [[DataBase sharedInstance] searchDigitsForMatrix:digit.matrixNumberRepresesntation];
+    if (!number || digit.error) {
+      return self.errorMessage;
+    }
+    printedLine = [printedLine stringByAppendingString:[NSString stringWithFormat:@"%@",number]];
+  }
+  return printedLine;
 }
 
 - (NSArray *)extractDigitsFromLine:(NSArray *)line
@@ -59,12 +76,15 @@ static DigitsReader *g_sharedInstance = nil;
   NSString *firstLine = line.firstObject;
   NSMutableArray *digits = [NSMutableArray new];
   int len = 0;
+  
   while (len <= firstLine.length) {
     Digit *digit = [Digit digitWithWidth:self.digitWidth height:self.linePerDigit nameSpace:self.allowedNameSpace];
-    
+    digit.delegate = self;
     for (int i = 0; i < line.count; i++) {
       NSString *digitLine = line[i];
       NSString *digitSubString = [digitLine substringWithRange:NSMakeRange(len, self.digitWidth)];
+      
+      //Create Digital number Matrix
       [digit addDigitData:digitSubString verticalIndex:i];
     }
     
@@ -77,6 +97,13 @@ static DigitsReader *g_sharedInstance = nil;
 - (NSArray *)extractLinesFromString:(NSString *)string
 {
   return [string componentsSeparatedByString:@"\n"];
+}
+
+# pragma mark DigitCharacterMappingProtocol
+
+- (NSNumber *)numberForDigit:(NSString *)charDigit
+{
+  return _charMapping[charDigit];
 }
 
 @end
