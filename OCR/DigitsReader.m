@@ -60,7 +60,7 @@ static DigitsReader *g_sharedInstance = nil;
   NSMutableArray *digits = [NSMutableArray new];
   int len = 0;
   while (len <= firstLine.length) {
-    Digit *digit = [Digit digitWithWidth:self.digitWidth height:self.linePerDigit];
+    Digit *digit = [Digit digitWithWidth:self.digitWidth height:self.linePerDigit nameSpace:self.allowedNameSpace];
     
     for (int i = 0; i < line.count; i++) {
       NSString *digitLine = line[i];

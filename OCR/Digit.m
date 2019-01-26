@@ -14,16 +14,18 @@
 @property (nonatomic)NSInteger width;
 @property (nonatomic)NSInteger height;
 @property (nonatomic)NSMutableArray *matrix;
+@property (nonatomic) NSString *allowedNameSpace;
 
 @end
 
 @implementation Digit
 
-+ (Digit *)digitWithWidth:(NSInteger)width height:(NSInteger)height
++ (Digit *)digitWithWidth:(NSInteger)width height:(NSInteger)height nameSpace:(NSString *)nameSpace
 {
   Digit *digit = [Digit new];
   digit.width = width;
   digit.height = height;
+  digit.allowedNameSpace = nameSpace;
   
   //Create Matrix with (width x Height) dimension
   digit.matrix = [[NSMutableArray alloc] initWithCapacity:digit.height];
@@ -39,5 +41,6 @@
 {
   self.matrix[index] = [Utilities stringToArray:data];
 }
+
 
 @end

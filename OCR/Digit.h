@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Digit : NSObject
 
-+ (Digit *)digitWithWidth:(NSInteger)width height:(NSInteger)height;
++ (Digit *)digitWithWidth:(NSInteger)width height:(NSInteger)height nameSpace:(NSString *)nameSpace;
 - (void)addDigitData:(NSString *)data verticalIndex:(NSInteger)index;
 @end
 
