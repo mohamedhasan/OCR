@@ -13,6 +13,11 @@
 		3B4A509C21FB7AFA0085FF3B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A509B21FB7AFA0085FF3B /* Utilities.m */; };
 		3B4A509F21FB916C0085FF3B /* Digit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A509E21FB916C0085FF3B /* Digit.m */; };
 		3B4A50A521FC5E9B0085FF3B /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A50A421FC5E9B0085FF3B /* DataBase.m */; };
+		3B4A50AE21FCA14C0085FF3B /* OCR_UnitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A50AD21FCA14C0085FF3B /* OCR_UnitTest.m */; };
+		3B4A50B321FCA71F0085FF3B /* Digit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A509E21FB916C0085FF3B /* Digit.m */; };
+		3B4A50B421FCA7230085FF3B /* DigitsReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A509821FB32900085FF3B /* DigitsReader.m */; };
+		3B4A50B521FCA7270085FF3B /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A50A421FC5E9B0085FF3B /* DataBase.m */; };
+		3B4A50B621FCA72E0085FF3B /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A509B21FB7AFA0085FF3B /* Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,10 +46,20 @@
 		3B4A50A321FC5E9B0085FF3B /* DataBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
 		3B4A50A421FC5E9B0085FF3B /* DataBase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
 		3B4A50A621FC9B130085FF3B /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Resources.h; sourceTree = "<group>"; };
+		3B4A50AB21FCA14B0085FF3B /* OCR-UnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OCR-UnitTest.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4A50AD21FCA14C0085FF3B /* OCR_UnitTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCR_UnitTest.m; sourceTree = "<group>"; };
+		3B4A50AF21FCA14C0085FF3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3B4A508221FB22350085FF3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B4A50A821FCA14B0085FF3B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				3B4A508721FB22350085FF3B /* OCR */,
+				3B4A50AC21FCA14B0085FF3B /* OCR-UnitTest */,
 				3B4A508621FB22350085FF3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				3B4A508521FB22350085FF3B /* OCR */,
+				3B4A50AB21FCA14B0085FF3B /* OCR-UnitTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +114,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		3B4A50AC21FCA14B0085FF3B /* OCR-UnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A50AD21FCA14C0085FF3B /* OCR_UnitTest.m */,
+				3B4A50AF21FCA14C0085FF3B /* Info.plist */,
+			);
+			path = "OCR-UnitTest";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -117,6 +143,23 @@
 			productReference = 3B4A508521FB22350085FF3B /* OCR */;
 			productType = "com.apple.product-type.tool";
 		};
+		3B4A50AA21FCA14B0085FF3B /* OCR-UnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B4A50B021FCA14C0085FF3B /* Build configuration list for PBXNativeTarget "OCR-UnitTest" */;
+			buildPhases = (
+				3B4A50A721FCA14B0085FF3B /* Sources */,
+				3B4A50A821FCA14B0085FF3B /* Frameworks */,
+				3B4A50A921FCA14B0085FF3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OCR-UnitTest";
+			productName = "OCR-UnitTest";
+			productReference = 3B4A50AB21FCA14B0085FF3B /* OCR-UnitTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -127,6 +170,9 @@
 				ORGANIZATIONNAME = Hassan;
 				TargetAttributes = {
 					3B4A508421FB22350085FF3B = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					3B4A50AA21FCA14B0085FF3B = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
@@ -144,9 +190,20 @@
 			projectRoot = "";
 			targets = (
 				3B4A508421FB22350085FF3B /* OCR */,
+				3B4A50AA21FCA14B0085FF3B /* OCR-UnitTest */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B4A50A921FCA14B0085FF3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3B4A508121FB22350085FF3B /* Sources */ = {
@@ -159,6 +216,18 @@
 				3B4A508921FB22350085FF3B /* main.m in Sources */,
 				3B4A509C21FB7AFA0085FF3B /* Utilities.m in Sources */,
 				3B4A509421FB260C0085FF3B /* UserIO.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B4A50A721FCA14B0085FF3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B4A50B421FCA7230085FF3B /* DigitsReader.m in Sources */,
+				3B4A50AE21FCA14C0085FF3B /* OCR_UnitTest.m in Sources */,
+				3B4A50B521FCA7270085FF3B /* DataBase.m in Sources */,
+				3B4A50B321FCA71F0085FF3B /* Digit.m in Sources */,
+				3B4A50B621FCA72E0085FF3B /* Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +361,38 @@
 			};
 			name = Release;
 		};
+		3B4A50B121FCA14C0085FF3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "OCR-UnitTest/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OCR-UnitTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3B4A50B221FCA14C0085FF3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "OCR-UnitTest/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.OCR-UnitTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -309,6 +410,15 @@
 			buildConfigurations = (
 				3B4A508D21FB22350085FF3B /* Debug */,
 				3B4A508E21FB22350085FF3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B4A50B021FCA14C0085FF3B /* Build configuration list for PBXNativeTarget "OCR-UnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B4A50B121FCA14C0085FF3B /* Debug */,
+				3B4A50B221FCA14C0085FF3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
