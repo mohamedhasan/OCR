@@ -50,7 +50,15 @@ static DigitsReader *g_sharedInstance = nil;
   
   NSString *result = @"";
   for (NSArray *line in digitLines) {
-   NSString *printedLine = [self digitLineToString:[self extractDigitsFromLine:line]];
+    
+    NSString *printedLine;
+    NSArray *lineDigits = [self extractDigitsFromLine:line];
+    if (lineDigits) {
+      printedLine = [self digitLineToString:lineDigits];
+    } else {
+      printedLine = self.errorMessage;
+    }
+    
     result = [result stringByAppendingString:printedLine];
     result = [result stringByAppendingString:@"\n"];
   }
@@ -73,23 +81,27 @@ static DigitsReader *g_sharedInstance = nil;
 
 - (NSArray *)extractDigitsFromLine:(NSArray *)line
 {
-  NSString *firstLine = line.firstObject;
   NSMutableArray *digits = [NSMutableArray new];
-  int len = 0;
+  int lineLength = 0;
   
-  while (len <= firstLine.length) {
+  while (lineLength <= [line.firstObject length]) {
     Digit *digit = [Digit digitWithWidth:self.digitWidth height:self.linePerDigit nameSpace:self.allowedNameSpace];
     digit.delegate = self;
     for (int i = 0; i < line.count; i++) {
+      
       NSString *digitLine = line[i];
-      NSString *digitSubString = [digitLine substringWithRange:NSMakeRange(len, self.digitWidth)];
+      //In case of a corrupted file multiple lines would be with different lengthes
+      if (digitLine.length != [line.firstObject length]) {
+        return nil;
+      }
+      NSString *digitSubString = [digitLine substringWithRange:NSMakeRange(lineLength, self.digitWidth)];
       
       //Create Digital number Matrix
       [digit addDigitData:digitSubString verticalIndex:i];
     }
     
     [digits addObject:digit];
-    len += self.digitWidth + self.delimits;
+    lineLength += self.digitWidth + self.delimits;
   }
   return digits;
 }
